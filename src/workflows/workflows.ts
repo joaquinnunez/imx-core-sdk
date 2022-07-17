@@ -106,6 +106,7 @@ export class Workflows {
     return registerOffchainWorkflowWithSigner(l1Signer, l2Signer, this.usersApi);
   }
 
+  /** @deprecated */
   public isRegisteredOnchain(signer: Signer, starkWallet: StarkWallet) {
     // Get instance of registration contract
     const registrationContract = Registration__factory.connect(
@@ -115,6 +116,19 @@ export class Workflows {
 
     return isRegisteredOnChainWorkflow(
       starkWallet.starkPublicKey,
+      registrationContract,
+    );
+  }
+
+  public isRegisteredOnchainWithSigner(walletConnection: WalletConnection) {
+    // Get instance of registration contract
+    const registrationContract = Registration__factory.connect(
+      this.config.registrationContractAddress,
+      walletConnection.l1Signer,
+    );
+
+    return isRegisteredOnChainWorkflow(
+      walletConnection.l2Signer.getAddress(),
       registrationContract,
     );
   }
