@@ -28,7 +28,7 @@ export interface MintTokenDataV2 {
      * @type {string}
      * @memberof MintTokenDataV2
      */
-    'blueprint'?: string;
+    'blueprint': string;
     /**
      * Token ID
      * @type {string}
