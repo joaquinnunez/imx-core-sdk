@@ -56,6 +56,7 @@ export async function generateIMXAuthorisationHeaders(
   const timestamp = Math.floor(Date.now() / 1000).toString();
   const signature = await signRaw(timestamp, ethSigner);
 
+  console.log(timestamp, signature)
   return {
     timestamp,
     signature,
